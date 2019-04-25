@@ -1,7 +1,7 @@
 {
-  "name": "create-phaser",
-  "version": "1.0.0",
-  "description": "Create a phaser",
+  "name": "@zhouhao27/create-phaser",
+  "version": "1.0.2",
+  "description": "Create a phaser game",
   "main": "src/index.js",
   "bin": {
     "create-phaser": "index.js"
@@ -9,12 +9,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords":[
+    "Phaser",
+    "TypeScript"
+  ],
   "files": [
     "bin/",
     "src/",
     "templates/"
   ],
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {

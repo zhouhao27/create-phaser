@@ -9,14 +9,17 @@ function parseArgumentsIntoOptions(rawArgs) {
   const args = arg({
     '--yes': Boolean,
     '--template': String,
-    '--help': Boolean,    
+    '--version': Boolean,
+    '--help': Boolean,        
     '-y': '--yes',
     '-h': '--help',
+    '-v': '--version',
     '-t': '--template'
   }, {
     argv: rawArgs.slice(2),
   });
   return {
+    showVersion: args['--version'] || false,
     skipPrompts: args['--yes'] || false,    
     name: args._[0],
     template: args['--template']
@@ -25,6 +28,12 @@ function parseArgumentsIntoOptions(rawArgs) {
 
 async function promptForMissingOptions(options) {
 
+  if (options.showVersion) {
+    const pjson = require('../package.json');
+    console.log(pjson.version);
+    process.exit(0)
+  }
+  
   if (!options.name) {
     console.error(`${chalk.red('You must specify a project name:')}`)
     showHelp()
@@ -58,7 +67,7 @@ async function promptForMissingOptions(options) {
 }
 
 function showHelp() {
-  console.log(`  phaser create ${chalk.green('<project-name>')} [options]`)
+  console.log(`  create-parse ${chalk.green('<project-name>')} [options]`)
   console.log()
   console.error('For example:')
   console.log(`  create-phaser ${chalk.green('my-project')}`)
@@ -72,6 +81,6 @@ function showHelp() {
 export async function cli(args) {
   let options = parseArgumentsIntoOptions(args);
   options = await promptForMissingOptions(options);
-  console.log(options);
+  // console.log(options);
   await createProject(options)
 }
