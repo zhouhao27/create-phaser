@@ -31,6 +31,19 @@ async function initGit(options) {
 }
 
 export async function createProject(options) {
+  const projectPath = path.resolve(
+    process.cwd(),
+    options.name
+  )  
+
+  if (!fs.existsSync(projectPath)){
+      fs.mkdirSync(projectPath);
+      console.log(`Project folder created in ${projectPath}`)  
+  } else {
+    // TODO:
+  }
+  
+/*  
   options = {
     ...options,
     targetDirectory: options.targetDirectory || process.cwd()
@@ -74,6 +87,7 @@ export async function createProject(options) {
   ]);
 
   await tasks.run();
-  console.log('%s Project ready', chalk.green.bold('DONE'));
+*/  
+  console.log('%s Project ready', chalk.green.bold('DONE'));  
   return true;
 }
