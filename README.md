@@ -15,6 +15,7 @@ npm i -g @zhouhao27@create-phaser
   -y, --yes to skip prompts
   -t, --template template name, currently only TypeScript or JavaScript supported
   -h, --help Help
+  -v, --version Show version
 ```
 
 ## Reference

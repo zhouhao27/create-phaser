@@ -33,7 +33,7 @@ async function promptForMissingOptions(options) {
     console.log(pjson.version);
     process.exit(0)
   }
-  
+
   if (!options.name) {
     console.error(`${chalk.red('You must specify a project name:')}`)
     showHelp()
@@ -75,6 +75,7 @@ function showHelp() {
   console.log(`   -y, --yes to skip prompts`)
   console.log(`   -t, --template template name, currently only TypeScript or JavaScript supported`)
   console.log(`   -h, --help Help`)
+  console.log(`   -v, --version Show version`)
   console.log()
 }
 
