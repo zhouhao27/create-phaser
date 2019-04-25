@@ -21,4 +21,5 @@ npm i -g @zhouhao27@create-phaser
 ## Reference
 
 [How to build a CLI with Node.js](https://www.twilio.com/blog/how-to-build-a-cli-with-node-js)
+
 [How to make a beautiful, tiny npm package and publish it](https://medium.freecodecamp.org/how-to-make-a-beautiful-tiny-npm-package-and-publish-it-2881d4307f78)
