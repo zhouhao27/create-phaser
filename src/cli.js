@@ -7,24 +7,18 @@ import chalk from 'chalk';
 
 function parseArgumentsIntoOptions(rawArgs) {
   const args = arg({
-    '--git': Boolean,
     '--yes': Boolean,
-    '--install': Boolean,
     '--template': String,
-    '--help': Boolean,
-    '-g': '--git',
+    '--help': Boolean,    
     '-y': '--yes',
-    '-i': '--install',
     '-h': '--help',
     '-t': '--template'
   }, {
     argv: rawArgs.slice(2),
   });
   return {
-    skipPrompts: args['--yes'] || false,
-    git: args['--git'] || false,
+    skipPrompts: args['--yes'] || false,    
     name: args._[0],
-    runInstall: args['--install'] || false,
     template: args['--template']
   };
 }
@@ -37,7 +31,7 @@ async function promptForMissingOptions(options) {
     process.exit(1)
   }
 
-  const defaultTemplate = 'JavaScript';
+  const defaultTemplate = 'TypeScript';
   if (options.skipPrompts) {
     return {
       ...options,
@@ -56,20 +50,10 @@ async function promptForMissingOptions(options) {
     });
   }
 
-  if (!options.git) {
-    questions.push({
-      type: 'confirm',
-      name: 'git',
-      message: 'Initialize a git repository?',
-      default: false,
-    });
-  }
-
   const answers = await inquirer.prompt(questions);
   return {
     ...options,
-    template: options.template || answers.template,
-    git: options.git || answers.git,
+    template: options.template || answers.template    
   };
 }
 
@@ -78,6 +62,10 @@ function showHelp() {
   console.log()
   console.error('For example:')
   console.log(`  create-phaser ${chalk.green('my-project')}`)
+  console.log(`   options:`)
+  console.log(`   -y, --yes to skip prompts`)
+  console.log(`   -t, --template template name, currently only TypeScript or JavaScript supported`)
+  console.log(`   -h, --help Help`)
   console.log()
 }
 
