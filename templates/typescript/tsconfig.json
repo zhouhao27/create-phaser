@@ -1,10 +1,12 @@
 {
   "compilerOptions": {
     "target": "ES2016",
-    "module": "CommonJS",
-    // "module": "amd",
+    "module": "CommonJS",    
     "sourceMap": true,
     "noImplicitAny": false,
     "strict": false
-  }
+  },
+  "files": [
+    "./node_modules/phaser3-docs/typescript/phaser.d.ts"
+  ]
 }

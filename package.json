@@ -1,8 +1,8 @@
 {
   "name": "@zhouhao27/create-phaser",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Create a phaser game",
-  "main": "src/index.js",
+  "main": "index.js",
   "bin": {
     "create-phaser": "index.js"
   },
